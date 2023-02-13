@@ -15,9 +15,7 @@ import os
 import sys
 import requests
 # from sphinxext.github_linkcode import github_linkcode_resolve
-
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..', '..')))
-
 
 # tell Sphinx matlab extension where to find matlab code.
 matlab_src_dir = os.path.abspath('../..') 
@@ -172,8 +170,9 @@ html_css_files = [
 html_theme_options = {
     "sidebar_hide_name": True,
     # To include different logos for the light and dark version of the website
-    # 'light_logo': 'img/logo_CT_version.svg',
-    # 'dark_logo': 'img/logo_CT_version_dark.svg',
+    'light_logo': 'img/logo_CT_version.svg',
+    'dark_logo': 'img/logo_CT_version_dark.svg',
+    # Footer icons
     'footer_icons': [
         {
             'name': 'Email',
