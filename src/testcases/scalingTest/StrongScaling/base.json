@@ -1,0 +1,97 @@
+{
+   "Mapping" : {
+      "tiles" : [1,2,2],
+      "tilesPerRank" : [1,2,2],
+      "wallTime" : 60
+   },
+
+   "Grid" : {
+      "xNum" : 256,
+      "yNum" : 256,
+      "zNum" : 256,
+      "GridInput" : {
+         "type" : "Cartesian",
+         "origin" : [0.0, 0.0, 0.0],
+         "width" : [1.0, 1.0, 1.0],
+         "xType" : { "type" : "Uniform" },
+         "yType" : { "type" : "Uniform" },
+         "zType" : { "type" : "Uniform" }
+      }
+   },
+
+   "Integrator" : {
+      "startIter" : 0,
+      "startTime" : 0.0,
+      "resetTime" : false,
+      "maxIter" : 200,
+      "maxTime" : 20.0,
+      "TimeStep" : {
+         "type" : "ConstantDeltaTime",
+         "DeltaTime" : 2.0e-11
+      },
+      "implicitChemistry" : false,
+      "EulerScheme" : {
+         "type" : "Hybrid",
+         "vorticityScale" : 1.0
+      }
+   },
+
+   "BC" : {
+      "xBCLeft" :  { "type" : "Periodic" },
+      "xBCRight" : { "type" : "Periodic" },
+      "yBCLeft" :  { "type" : "Periodic" },
+      "yBCRight" : { "type" : "Periodic" },
+      "zBCLeft" :  { "type" : "Periodic" },
+      "zBCRight" : { "type" : "Periodic" },
+      "bufferZone" : { "type" : "Off" }
+   },
+
+   "Flow" : {
+      "mixture" : {
+         "type" : "ConstPropMix",
+         "gasConstant" : 1.0,
+         "gamma" : 1.4,
+         "prandtl" : 0.70,
+         "viscosityModel" : {
+            "type" : "Constant",
+            "Visc" : 1.0
+         }
+      },
+      "initCase" : {
+         "type" : "Uniform",
+         "pressure" : 1.0,
+         "temperature" : 1.0,
+         "velocity" : [1.0, 0.0, 0.0],
+         "molarFracs" : {
+            "Species" : [{"Name" : "Mix", "MolarFrac" : 1.0 }]
+         }
+      },
+      "resetMixture" : false,
+      "initMixture" : {
+         "Species" : [{"Name" : "Mix", "MolarFrac" : 1.0 }]
+      },
+      "bodyForce" : [0.0, 0.0, 0.0],
+      "turbForcing" : {
+         "type" : "OFF"
+      },
+      "laser" : { "type" : "Off" }
+   },
+
+   "IO" : {
+      "wrtRestart" : false,
+      "restartEveryTimeSteps" : 5000,
+      "probesSamplingInterval" : 1,
+      "probes" : [],
+      "AveragesSamplingInterval" : 1,
+      "ResetAverages" : false,
+      "YZAverages" : [],
+      "XZAverages" : [],
+      "XYAverages" : [],
+      "XAverages" : [],
+      "YAverages" : [],
+      "ZAverages" : [],
+      "volumeProbes" : []
+   },
+
+   "Efield" : { "type" : "Off" }
+}

@@ -1,0 +1,112 @@
+{
+   "Mapping" : {
+      "tiles" : [1,1,1],
+      "tilesPerRank" : [1,1,1],
+      "wallTime" : 10000
+   },
+
+   "Grid" : {
+      "xNum" : 600,
+      "yNum" : 1,
+      "zNum" : 1,
+      "GridInput" : {
+         "type" : "Cartesian",
+         "origin" : [0.0, 0.0, 0.0],
+         "width" : [1.0, 1.0, 1.0],
+         "xType" : { "type" : "Uniform" },
+         "yType" : { "type" : "Uniform" },
+         "zType" : { "type" : "Uniform" }
+      }
+   },
+
+   "Integrator" : {
+      "startIter" : 0,
+      "startTime" : 0.0,
+      "resetTime" : false,
+      "maxIter" : 900,
+      "maxTime" : 58.807109394117276,
+      "TimeStep" : {
+         "type" : "ConstantDeltaTime",
+         "DeltaTime" : 2.9403554697058637e-05
+      },
+      "implicitChemistry" : true,
+      "EulerScheme" : {
+         "type" : "Hybrid",
+         "vorticityScale" : 1.0e-6
+      }
+   },
+
+   "BC" : {
+      "xBCLeft" : {
+         "type" : "NSCBC_Inflow",
+         "VelocityProfile" : {
+            "type" : "Constant",
+            "velocity" : [0.0, 0.0, 0.0]
+         },
+         "P" : 1.95256e1,
+         "TemperatureProfile" : {
+            "type" : "Constant",
+            "temperature" : 30.0
+         },
+         "MixtureProfile" : {
+            "type" : "Constant",
+            "Mixture" : {
+               "Species" : [{"Name" : "N2", "MolarFrac" : 1.279631e-02 },
+                            {"Name" : "O2", "MolarFrac" : 3.695112e-06 },
+                            {"Name" : "NO", "MolarFrac" : 2.694521e-04 },
+                            {"Name" :  "N", "MolarFrac" : 7.743854e-01 },
+                            {"Name" :  "O", "MolarFrac" : 2.125451e-01 }]
+            }
+         }
+      },
+      "xBCRight" : {
+         "type" : "NSCBC_Outflow",
+         "P" : 1.0
+      },
+      "yBCLeft" :  { "type" : "Periodic" },
+      "yBCRight" : { "type" : "Periodic" },
+      "zBCLeft" :  { "type" : "Periodic" },
+      "zBCRight" : { "type" : "Periodic" },
+      "bufferZone" : { "type" : "Off" }
+   },
+
+   "Flow" : {
+      "mixture" : {
+         "type" : "AirMix",
+         "LRef" : 1.0,
+         "TRef" : 300.0,
+         "PRef" : 1.0e4,
+         "XiRef" : {
+            "Species" : [{"Name" : "N2", "MolarFrac" : 0.79 },
+                         {"Name" : "O2", "MolarFrac" : 0.21 }]
+         }
+      },
+      "initCase" : { "type" : "GrossmanCinnellaProblem" },
+      "resetMixture" : false,
+      "initMixture" : {
+         "Species" : [{"Name" : "N2", "MolarFrac" : 0.79 },
+                      {"Name" : "O2", "MolarFrac" : 0.21 }]
+      },
+      "bodyForce" : [0.0, 0.0, 0.0],
+      "turbForcing" : { "type" : "OFF" },
+      "laser" : { "type" : "Off" }
+   },
+
+   "IO" : {
+      "wrtRestart" : true,
+      "restartEveryTimeSteps" : 100,
+      "probesSamplingInterval" : 1,
+      "probes" : [],
+      "AveragesSamplingInterval" : 10,
+      "ResetAverages" : false,
+      "YZAverages" : [],
+      "XZAverages" : [],
+      "XYAverages" : [],
+      "XAverages" : [],
+      "YAverages" : [],
+      "ZAverages" : [],
+      "volumeProbes" : []
+   },
+
+   "Efield" : { "type" : "Off" }
+}

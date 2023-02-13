@@ -1,0 +1,97 @@
+{
+   "Mapping" : {
+      "tiles" : [1,1,1],
+      "tilesPerRank" : [1,1,1],
+      "wallTime" : 60
+   },
+
+   "Grid" : {
+      "xNum" : 32,
+      "yNum" : 32,
+      "zNum" : 32,
+      "GridInput" : {
+         "type" : "Cartesian",
+         "origin" : [0.0, 0.0, 0.0],
+         "width" : [6.28318530718, 6.28318530718, 6.28318530718],
+         "xType" : { "type" : "Uniform" },
+         "yType" : { "type" : "Uniform" },
+         "zType" : { "type" : "Uniform" }
+      }
+   },
+
+   "Integrator" : {
+      "startIter" : 0,
+      "startTime" : 0.0,
+      "resetTime" : false,
+      "maxIter" : 20,
+      "maxTime" : 30.0,
+      "TimeStep" : {
+         "type" : "ConstantCFL",
+         "cfl" : 0.5
+      },
+      "implicitChemistry" : false,
+      "EulerScheme" : {
+         "type" : "Hybrid",
+         "vorticityScale" : 1.0
+      }
+   },
+
+   "BC" : {
+      "xBCLeft" :  { "type" : "Periodic" },
+      "xBCRight" : { "type" : "Periodic" },
+      "yBCLeft" :  { "type" : "Periodic" },
+      "yBCRight" : { "type" : "Periodic" },
+      "zBCLeft" :  { "type" : "Periodic" },
+      "zBCRight" : { "type" : "Periodic" },
+      "bufferZone" : { "type" : "Off" }
+   },
+
+   "Flow" : {
+      "mixture": {
+         "type" : "AirMix",
+         "LRef" : 1.0,
+         "TRef" : 500.0,
+         "PRef" : 1.0e5,
+         "XiRef" : {
+            "Species" : [{"Name" : "N2", "MolarFrac" : 0.79 },
+                         {"Name" : "O2", "MolarFrac" : 0.21 }]
+         }
+      },
+      "initCase" : {
+         "type" : "TaylorGreen3DVortex",
+         "pressure" : 1.0,
+         "temperature" :  1.0,
+         "velocity" : 0.002634364032587426,
+         "molarFracs" : {
+            "Species" : [{"Name" : "N2", "MolarFrac" : 0.79 },
+                         {"Name" : "O2", "MolarFrac" : 0.21 }]
+         }
+      },
+      "resetMixture" : false,
+      "initMixture" : {
+         "Species" : [{"Name" : "N2", "MolarFrac" : 0.79 },
+                      {"Name" : "O2", "MolarFrac" : 0.21 }]
+      },
+      "bodyForce" : [0.0, 0.0, 0.0],
+      "turbForcing" : { "type" : "OFF" },
+      "laser" : { "type" : "Off" }
+   },
+
+   "IO" : {
+      "wrtRestart" : true,
+      "restartEveryTimeSteps" : 100,
+      "probesSamplingInterval" : 1,
+      "probes" : [],
+      "AveragesSamplingInterval" : 10,
+      "ResetAverages" : false,
+      "YZAverages" : [],
+      "XZAverages" : [],
+      "XYAverages" : [],
+      "XAverages" : [],
+      "YAverages" : [],
+      "ZAverages" : [],
+      "volumeProbes" : []
+   },
+
+   "Efield" : { "type" : "Off" }
+}
