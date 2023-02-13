@@ -12,3 +12,5 @@ To build it locally
 pip install sphinx-autobuild
 sphinx-autobuild docs/source docs/build/html
 ```
+
+Info about [readthedocs](https://docs.readthedocs.io/en/stable/tutorial/).

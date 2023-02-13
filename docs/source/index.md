@@ -16,4 +16,5 @@
     :titlesonly:
 
 documentation/index
+documentation/functions/index
 ```
