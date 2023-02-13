@@ -1,6 +1,6 @@
-# Combustion Toolbox website
+# HTR solver website - TEST
 
-The source code of Combustion Toolbox is in its own [repository](https://github.com/AlbertoCuadra/combustion_toolbox). This repository is used to build the website and the documentation of the project.
+The source code of the HTR solver is in its own [repository](https://github.com/stanfordhpccenter/HTR-solver). This repository is used to build the website and the documentation of the project.
 
 ## Getting started
 ```terminal

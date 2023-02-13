@@ -20,7 +20,7 @@ A collection of unclasified functions necessary to perform all the calculations 
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils
+.. automodule:: src.utils_test
    :members:
 ```
 :::
@@ -33,7 +33,7 @@ A collection of functions necessary to obtain generate the databases in CT.
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.databases
+.. automodule:: src.utils_test.databases
    :members:
 ```
 :::
@@ -46,7 +46,7 @@ A collection of functions necessary to display the results (command window and p
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.display
+.. automodule:: src.utils_test.display
    :members:
 ```
 :::
@@ -59,7 +59,7 @@ A collection of Equation of States (EoS) implemented in CT.
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.eos
+.. automodule:: src.utils_test.eos
    :members:
 ```
 :::
@@ -72,7 +72,7 @@ A collection of functions to export results.
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.export
+.. automodule:: src.utils_test.export
    :members:
 ```
 :::
@@ -96,11 +96,11 @@ Roots algorithm used to obtain the temperature at equilibrium for a given thermo
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.root_finding
+.. automodule:: src.utils_test.root_finding
    :members:
-.. automodule:: src.utils.root_finding.newton
+.. automodule:: src.utils_test.root_finding.newton
    :members:
-.. automodule:: src.utils.root_finding.steffenson
+.. automodule:: src.utils_test.root_finding.steffenson
    :members:
 ```
 :::
@@ -114,7 +114,7 @@ Functions to obtain thermodynamic properties from a given mixture.
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.thermo
+.. automodule:: src.utils_test.thermo
    :members:
 ```
 :::
@@ -127,7 +127,7 @@ A collection of functions to generate the validations automatically.
 
 :::{dropdown} Routines
 ```{eval-rst}
-.. automodule:: src.utils.validations
+.. automodule:: src.utils_test.validations
    :members:
 ```
 :::

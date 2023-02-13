@@ -19,20 +19,19 @@ import requests
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..', '..')))
 
 
-
-
 # tell Sphinx matlab extension where to find matlab code.
 matlab_src_dir = os.path.abspath('../..') 
 
 # -- Project information -----------------------------------------------------
 
-project = 'Combustion Toolbox'
-project_acronym = 'CT'
-copyright = '2022, Alberto Cuadra Lara'
-author = 'Alberto Cuadra Lara'
+project = 'HTR solver'
+project_acronym = 'HTR'
+copyright = '2023, Mario Di Renzo'
+author = 'Mario Di Renzo'
 
 # The full version, including alpha/beta/rc tags
-url = 'https://github.com/AlbertoCuadra/combustion_toolbox/releases/latest'
+# To include this info in the website
+url = 'https://github.com/stanfordhpccenter/HTR-solver/releases/latest'
 r = requests.get(url)
 release = r.url.split('/')[-1]
 # release = 'v0.9.99'
@@ -44,23 +43,21 @@ release = r.url.split('/')[-1]
 # ones.
 extensions = [
     'myst_parser',
-    'sphinx.ext.autodoc',   # for enumeration of objects stuff
+    'sphinx.ext.autodoc',          # for enumeration of objects stuff
     # 'sphinx.ext.autosummary',
     'nbsphinx',
     'sphinx_togglebutton',
-    # 'sphinxcontrib.fulltoc', # for sidebar TOC
-    'sphinxcontrib.matlab',    # support for Matlab
+    # 'sphinxcontrib.fulltoc',     # for sidebar TOC
+    'sphinxcontrib.matlab',        # support for Matlab
     # 'github',
-    # 'sphinx.ext.linkcode',     # to link code to the repository
-    'sphinx.ext.viewcode',     # view source code
-    'sphinx.ext.napoleon',     # support for shorthand syntax
-    'sphinx.ext.mathjax',      # LaTeX support
-    'texext.math_dollar',      # lightweight LaTeX filter
-    'sphinx_toolbox.collapse', # collapse long sections
+    # 'sphinx.ext.linkcode',       # to link code to the repository
+    'sphinx.ext.viewcode',         # view source code
+    'sphinx.ext.napoleon',         # support for shorthand syntax
+    'sphinx.ext.mathjax',          # LaTeX support
+    'texext.math_dollar',          # lightweight LaTeX filter
+    'sphinx_toolbox.collapse',     # collapse long sections
     'sphinx_copybutton',
     'sphinx_design',
-    # "sphinxext.opengraph",
-    # "sphinx_inline_tabs",
 ]
 
 myst_enable_extensions = ["colon_fence"]
@@ -73,6 +70,7 @@ sd_fontawesome_latex = True
 
 source_suffix = ['.rst', '.md']
 
+# To ignore non-default type of parameters 
 nitpicky = True
 nitpick_ignore = [
     ('mat:obj', 'struct'),
@@ -91,13 +89,16 @@ nitpick_ignore = [
     ('mat:obj', 'empty'),
 ]
 
+# To link routines to the source code allocated in Github
+# I couldn't make it work, thats why the extension 
+# sphinx.ext.linkcode is commented
 def linkcode_resolve(domain, info):
     return github_linkcode_resolve(
             domain=domain,
             info=info,
             allowed_module_names=[],
-            github_org_id='AlbertoCuadra',
-            github_repo_id='combustion_toolbox',
+            github_org_id='stanfordhpccenter',
+            github_repo_id='HTR-solver',
             branch='master',
             source_prefix='')
 
@@ -170,12 +171,13 @@ html_css_files = [
 
 html_theme_options = {
     "sidebar_hide_name": True,
-    'light_logo': 'img/logo_CT_version.svg',
-    'dark_logo': 'img/logo_CT_version_dark.svg',
+    # To include different logos for the light and dark version of the website
+    # 'light_logo': 'img/logo_CT_version.svg',
+    # 'dark_logo': 'img/logo_CT_version_dark.svg',
     'footer_icons': [
         {
             'name': 'Email',
-            'url': 'mailto:acuadra@ing.uc3m.es',
+            'url': 'mailto:mario.direnzo@unisalento.it',
             "html": """
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                 <path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/>
@@ -184,7 +186,7 @@ html_theme_options = {
         },
         {
             'name': 'GitHub',
-            'url': 'https://github.com/AlbertoCuadra/combustion_toolbox',
+            'url': 'https://github.com/stanfordhpccenter/HTR-solver',
             "html": """
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
@@ -195,6 +197,7 @@ html_theme_options = {
     
     "navigation_with_keys": True,
     
+    # Default colors of the light version of the website
     "light_css_variables": {
         "color-brand-primary": "#577A95",
         "color-brand-content": "#577A95",
@@ -222,6 +225,7 @@ html_theme_options = {
         "sd-color-light-text": "#323232ff",
     },
     
+    # Default colors of the dark version of the website
     "dark_css_variables": {
         "color-brand-primary": "#bac5e5ff",
         "color-brand-content": "#44a79dff",
